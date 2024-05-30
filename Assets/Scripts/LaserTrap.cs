@@ -35,13 +35,18 @@ public class LaserTrap : MonoBehaviour
 
     void AimObject()
     {
-        Ray hit = new Ray(transform.position, transform.up * Length);
+        Ray ray = new Ray(transform.position, transform.up * Length);
+        RaycastHit hit;
 
         //Debug.DrawRay(transform.position, transform.up * Length, Color.blue);
 
-        if(Physics.Raycast(hit, Length, PlayerHit))
+        if (Physics.Raycast(ray, out hit, Length, PlayerHit))
         {
-            Debug.Log("플레이어 감지");
+            //Debug.Log("플레이어 감지");
+            if (hit.collider.TryGetComponent<Player>(out Player player))
+            {
+                player.status.DecreaseHP(3);
+            }
         }
 
     }

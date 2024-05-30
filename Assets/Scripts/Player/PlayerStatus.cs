@@ -48,6 +48,17 @@ public class PlayerStatus : MonoBehaviour
         }
     }
 
+    public void DecreaseHP(float amount)
+    {
+        StartCoroutine(Decrease(amount));
+    }
+
+    IEnumerator Decrease(float amount)
+    {
+        hp.Subtract(amount * Time.deltaTime);
+        yield return new WaitForSeconds(1);
+    }
+
     IEnumerator SpeedUp(float speed, int time)
     {
         CharacterManager.Instance.Player.controller.moveSpeed *= speed;

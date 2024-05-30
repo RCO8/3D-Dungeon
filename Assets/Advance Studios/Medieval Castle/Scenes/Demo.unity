@@ -7331,6 +7331,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Length: 5
+  PlayerHit:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!120 &1222636721
 LineRenderer:
   serializedVersion: 2
@@ -7384,7 +7387,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.121051885
         inSlope: 0
         outSlope: 0
         tangentMode: 0
