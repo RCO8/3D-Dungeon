@@ -78,7 +78,7 @@ public class MovingPlatform : MonoBehaviour
 
     void ChangePosition()
     {
-        Debug.Log("Change");
+        //Debug.Log("Change");
         Vector3 tmp = startPos;
         startPos = endPos;
         endPos = tmp;
