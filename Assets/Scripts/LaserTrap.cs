@@ -5,11 +5,11 @@ using UnityEngine;
 public class LaserTrap : MonoBehaviour
 {
     public float Length = 5;
+    public LayerMask PlayerHit;
     LineRenderer lineRenderer;
 
     Transform targetPos;
 
-    // Start is called before the first frame update
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -18,10 +18,31 @@ public class LaserTrap : MonoBehaviour
         //targetPos.localPosition += transform.up;
     }
 
-    // Update is called once per frame
     void Update()
+    {
+        //라인 그리기
+        DrawLine();
+
+        //레이저 맞추기
+        AimObject();
+    }
+
+    void DrawLine()
     {
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, targetPos.localPosition + transform.up * Length);
+    }
+
+    void AimObject()
+    {
+        Ray hit = new Ray(transform.position, transform.up * Length);
+
+        //Debug.DrawRay(transform.position, transform.up * Length, Color.blue);
+
+        if(Physics.Raycast(hit, Length, PlayerHit))
+        {
+            Debug.Log("플레이어 감지");
+        }
+
     }
 }
